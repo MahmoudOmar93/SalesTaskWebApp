@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SalesTaskWebApp.Models.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container p-3">
+    <div class="row p-4">
+        <div class="col-6">
+            <h2 class="text-primary">Product List</h2>
+        </div>
+        <div class="col-6 text-right">
+            @Html.ActionLink("Add New Product", "Create", "Product", new { @class = "btn btn-primary " })
+        </div>
+    </div>
+    <br /> <br />
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Sub Category</th>
+                <th>Brand</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{int number = 1; }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(number++)</td>
+                    <td>@item.Code</td>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>@item.Price</td>
+                    <td>@item.SubCategory.Name</td>
+                    <td>@item.Brand.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

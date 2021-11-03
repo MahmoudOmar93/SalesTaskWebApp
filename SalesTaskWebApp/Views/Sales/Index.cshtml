@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SalesTaskWebApp.Models.ViewModel.OrderToListViewModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container p-3">
+    <div class="row p-4">
+        <div class="col-6">
+            <h2 class="text-primary">Sales List</h2>
+        </div>
+        <div class="col-6 text-right">
+            @Html.ActionLink("Add New Sales", "Create", "Sales", new { @class = "btn btn-primary " })
+        </div>
+    </div>
+    <br /> <br />
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Sales Number</th>
+                <th>Customer</th>
+                <th>Date</th>
+                <th>Product Quantity</th>
+                <th>Total Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{int number = 1; }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(number++)</td>
+                    <td>@item.OrderNumber</td>
+                    <td>@item.Customer</td>
+                    <td>@item.Date.ToString("dd/MM/yyyy")</td>
+                    <td>@item.ProductQuantity</td>
+                    <td>@item.TotalPrice</td>
+                    <td>@Html.ActionLink("Edit","Edit", new { Id = item.Id })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
